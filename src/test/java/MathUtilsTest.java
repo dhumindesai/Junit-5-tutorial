@@ -27,6 +27,7 @@ class MathUtilsTest {
     }
 
     @Test
+    @DisplayName("Testing add method from MathUtils")
     void testAdd() {
         int expected = 2;
         int actual = mu.add(1,1);
@@ -41,5 +42,12 @@ class MathUtilsTest {
     @Test
     void testDivideThrowsArithmaticException(){
         assertThrows(ArithmeticException.class,() -> mu.divide(1,0));
+    }
+
+    @Test
+    @DisplayName("Multiply method from MathUtil")
+    @Disabled
+    void testMultiply(){
+        fail("TDD. Work in progress");
     }
 }
