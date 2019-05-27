@@ -5,8 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class MathUtilsTest {
 
     @Test
-    public void test(){
-        System.out.println("Test ran");
-    }
+    void add() {
+        MathUtils mu = new MathUtils();
+        int expected = 2;
+        int actual = mu.add(1,1);
 
+        assertEquals(expected, actual);
+    }
 }
