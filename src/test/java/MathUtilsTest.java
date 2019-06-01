@@ -57,10 +57,11 @@ class MathUtilsTest {
                 );
     }
 
-    @Test
+    @RepeatedTest(3)
     @EnabledOnOs(OS.MAC)
-    void testCalculateCircleAria(){
-        boolean isServerUp = false;
+    void testCalculateCircleAria(RepetitionInfo repetitionInfo){
+        System.out.println("Rep: " + Integer.toString(repetitionInfo.getCurrentRepetition()));
+        boolean isServerUp = true;
         Assumptions.assumeTrue(isServerUp,"Server is up");
         assertEquals(314.1592653589793,mu.calculateCircleArea(10), "Must return correct circle area");
     }
