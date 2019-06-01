@@ -4,6 +4,7 @@ import org.junit.jupiter.api.condition.OS;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("When Testing MathUtils")
 class MathUtilsTest {
 
     MathUtils mu;
@@ -28,12 +29,23 @@ class MathUtilsTest {
         System.out.println("Cleaning Up..");
     }
 
-    @Test
-    @DisplayName("Testing add method from MathUtils")
-    void testAdd() {
-        int expected = 2;
-        int actual = mu.add(1,1);
-        assertEquals(expected, actual);
+    @Nested
+    @DisplayName("Add method")
+    class testAdd{
+        @Test
+        @DisplayName("when adding positives")
+        void testAddPositives() {
+            int expected = 2;
+            int actual = mu.add(1, 1);
+            assertEquals(expected, actual, "should return postive integer");
+        }
+        @Test
+        @DisplayName("when adding negatives")
+        void testAddNegatives() {
+            int expected = -2;
+            int actual = mu.add(-1, -1);
+            assertEquals(expected, actual,"should return negative integer");
+        }
     }
 
     @Test
