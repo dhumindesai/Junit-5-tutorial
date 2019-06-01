@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,7 +37,10 @@ class MathUtilsTest {
     }
 
     @Test
+    @EnabledOnOs(OS.MAC)
     void testCalculateCircleAria(){
+        boolean isServerUp = false;
+        Assumptions.assumeTrue(isServerUp,"Server is up");
         assertEquals(314.1592653589793,mu.calculateCircleArea(10), "Must return correct circle area");
     }
 
