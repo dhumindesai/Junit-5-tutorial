@@ -37,6 +37,15 @@ class MathUtilsTest {
     }
 
     @Test
+    public void testMultiply(){
+        //assertEquals(4,mu.multiply(2,2));
+        assertAll(() -> assertEquals(4,mu.multiply(2,2)),
+                () -> assertEquals(0,mu.multiply(2,0)),
+                () -> assertEquals(-2,mu.multiply(2,-1))
+                );
+    }
+
+    @Test
     @EnabledOnOs(OS.MAC)
     void testCalculateCircleAria(){
         boolean isServerUp = false;
@@ -50,9 +59,9 @@ class MathUtilsTest {
     }
 
     @Test
-    @DisplayName("Multiply method from MathUtil")
+    @DisplayName("test method from MathUtil")
     @Disabled
-    void testMultiply(){
+    void testMethod(){
         fail("TDD. Work in progress");
     }
 }

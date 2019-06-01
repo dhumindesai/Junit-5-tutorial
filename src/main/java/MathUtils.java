@@ -11,4 +11,8 @@ public class MathUtils {
     public double calculateCircleArea(double radius){
         return Math.PI * radius * radius;
     }
+
+    public int multiply(int a, int b) {
+        return a*b;
+    }
 }
