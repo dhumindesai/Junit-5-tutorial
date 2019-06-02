@@ -51,7 +51,9 @@ class MathUtilsTest {
     }
 
     @Test
-    public void testMultiply(){
+    @Tag("UnitTest")
+    public void testMultiply(TestReporter testReporter, TestInfo testInfo){
+        testReporter.publishEntry("when running "+ testInfo.getDisplayName() + "in tag " + testInfo.getTags());
         //assertEquals(4,mu.multiply(2,2));
         assertAll(() -> assertEquals(4,mu.multiply(2,2)),
                 () -> assertEquals(0,mu.multiply(2,0)),
@@ -61,6 +63,7 @@ class MathUtilsTest {
 
     @RepeatedTest(3)
     @EnabledOnOs(OS.MAC)
+    @Tag("UnitTest")
     void testCalculateCircleAria(RepetitionInfo repetitionInfo){
         System.out.println("Rep: " + Integer.toString(repetitionInfo.getCurrentRepetition()));
         boolean isServerUp = true;
@@ -81,7 +84,10 @@ class MathUtilsTest {
     }
 
     @Test
-    void testPerform(){
+    @Tag("Mockito")
+    @DisplayName("perform test")
+    void testPerform(TestReporter testReporter, TestInfo testInfo){
+        testReporter.publishEntry("when running "+ testInfo.getDisplayName() + " in tag " + testInfo.getTags());
         when(mathUtilsHelperService.calculateResult(2,3)).thenReturn(5);
         assertEquals(10,mu.perform(2,3));
         verify(mathUtilsHelperService).calculateResult(2,3);
