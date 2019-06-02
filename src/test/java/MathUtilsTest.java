@@ -3,11 +3,13 @@ import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @DisplayName("When Testing MathUtils")
 class MathUtilsTest {
 
     MathUtils mu;
+    MathUtilsHelperService  mathUtilsHelperService = mock(MathUtilsHelperService.class);
 
     @BeforeAll
     static void beforeAll(){
@@ -21,7 +23,7 @@ class MathUtilsTest {
 
     @BeforeEach
     void init(){
-         mu = new MathUtils();
+         mu = new MathUtils(mathUtilsHelperService);
     }
 
     @AfterEach
@@ -76,5 +78,12 @@ class MathUtilsTest {
     @Disabled
     void testMethod(){
         fail("TDD. Work in progress");
+    }
+
+    @Test
+    void testPerform(){
+        when(mathUtilsHelperService.calculateResult(2,3)).thenReturn(5);
+        assertEquals(10,mu.perform(2,3));
+        verify(mathUtilsHelperService).calculateResult(2,3);
     }
 }

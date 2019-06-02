@@ -1,5 +1,11 @@
 public class MathUtils {
 
+    MathUtilsHelperService mathUtilsHelperService;
+
+    public MathUtils(MathUtilsHelperService mathUtilsHelperService){
+        this.mathUtilsHelperService = mathUtilsHelperService;
+    }
+
     public int add(int a, int b){
         return a+b;
     }
@@ -14,5 +20,10 @@ public class MathUtils {
 
     public int multiply(int a, int b) {
         return a*b;
+    }
+
+    public int perform(int a, int b){
+        int result = mathUtilsHelperService.calculateResult(a,b);
+        return result*2;
     }
 }
